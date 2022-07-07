@@ -4,7 +4,7 @@ const bodyparser = require('body-parser');
 const mongoose = require("mongoose");
 var multipart = require('connect-multiparty');
 const userRoutes = require("./routes/userRoute");
-//const messageRoutes = require("./routes/messages");
+const messageRoutes = require("./routes/messageRoute");
 const app = express();
 const socket = require("socket.io");
 //dotenv config
@@ -34,7 +34,7 @@ mongoose
 
   //Use routes
 app.use("/user", userRoutes);
-//app.use("/api/messages", messageRoutes);
+app.use("/api/messages", messageRoutes);
 
 const server = app.listen(process.env.PORT, () =>
   console.log(`Server started on ${process.env.PORT}`)
@@ -46,7 +46,7 @@ const io = socket(server, {
   },
 });
 
-/*global.onlineUsers = new Map();
+global.onlineUsers = new Map();
 io.on("connection", (socket) => {
   global.chatSocket = socket;
   socket.on("add-user", (userId) => {
@@ -59,4 +59,4 @@ io.on("connection", (socket) => {
       socket.to(sendUserSocket).emit("msg-recieve", data.msg);
     }
   });
-});*/
+});

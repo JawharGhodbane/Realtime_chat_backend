@@ -77,7 +77,7 @@ module.exports.setAvatar = async (req, res, next) => {
   }
 };
 
-module.exports.logOut = (req, res, next) => {
+/*module.exports.logOut = (req, res, next) => {
   try {
     if (!req.params.id) return res.json({ msg: "User id is required " });
     onlineUsers.delete(req.params.id);
@@ -85,4 +85,4 @@ module.exports.logOut = (req, res, next) => {
   } catch (ex) {
     next(ex);
   }
-};
+};*/
